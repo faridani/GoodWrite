@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Large Textbox</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+        .textbox-container {
+            width: 90%;
+            height: 50vh;
+        }
+        .large-textbox {
+            width: 100%;
+            height: 100%;
+            padding: 15px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            resize: none;
+        }
+        .large-textbox:focus {
+            outline: none;
+            border-color: #4a90e2;
+            box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="textbox-container">
+        <textarea class="large-textbox">Beluga whales, often called "sea canaries" due to their wide range of vocalizations, are among the most distinctive and charismatic marine mammals in the Arctic and sub-Arctic waters. These remarkable creatures are easily recognizable by their pure white coloration and their flexible neck, which allows them to turn their heads in all directions. Unlike other whales, belugas have a rounded forehead, called a melon, that they can change shape at will, helping them to produce their complex array of sounds and echolocation signals.
+
+Living in social groups that can number from a few individuals to hundreds, beluga whales are highly adapted to life in the Arctic's challenging environment. They have a thick layer of blubber that helps them survive in frigid waters, and they lack a dorsal fin - an adaptation that allows them to swim easily under ice sheets. These intelligent cetaceans are known for their playful behavior, strong family bonds, and remarkable ability to navigate through ice-filled waters using their sophisticated sonar abilities.</textarea>
+    </div>
+</body>
+</html>

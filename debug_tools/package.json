@@ -1,0 +1,9 @@
+{
+  "name": "ollama-test",
+  "version": "1.0.0",
+  "description": "Test script for Ollama API",
+  "main": "test_ollama.js",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}
