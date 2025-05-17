@@ -5,6 +5,26 @@ chrome.runtime.onInstalled.addListener(() => {
       contexts: ["selection", "editable"]
     });
   });
+
+// Add CORS headers for requests to the local Ollama endpoint
+chrome.webRequest.onHeadersReceived.addListener(
+  (details) => {
+    const headers = details.responseHeaders || [];
+    const hasCORS = headers.some(h => h.name.toLowerCase() === "access-control-allow-origin");
+    if (!hasCORS) {
+      headers.push({ name: "Access-Control-Allow-Origin", value: "*" });
+    } else {
+      headers.forEach(h => {
+        if (h.name.toLowerCase() === "access-control-allow-origin") {
+          h.value = "*";
+        }
+      });
+    }
+    return { responseHeaders: headers };
+  },
+  { urls: ["http://localhost:11434/*"] },
+  ["blocking", "responseHeaders", "extraHeaders"]
+);
   
   chrome.contextMenus.onClicked.addListener((info, tab) => {
     if (info.menuItemId === "rewrite") {
@@ -35,7 +55,7 @@ chrome.runtime.onInstalled.addListener(() => {
         headers: {
           "Content-Type": "application/json"
         },
-        json: requestBody
+        body: JSON.stringify(requestBody)
       })
         .then(response => {
           console.log("Raw response status:", response.status);
