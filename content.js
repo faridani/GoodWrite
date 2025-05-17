@@ -52,15 +52,22 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         console.log("we are inside callOlamma");
         console.log(`Response: ${JSON.stringify(response, null, 2)}`);
         if (response && response.correctedText) {
-          navigator.clipboard.writeText(response.correctedText)
-            .then(() => {
-              console.log("Corrected text copied to clipboard!");
-              overlay.remove();
-            })
-            .catch(err => {
-              console.error("Failed to copy text: ", err);
-              overlay.remove();
-            });
+          if (activeEl) {
+            if ('value' in activeEl) {
+              activeEl.value = response.correctedText;
+            } else if (activeEl.isContentEditable) {
+              activeEl.textContent = response.correctedText;
+            }
+          } else {
+            navigator.clipboard.writeText(response.correctedText)
+              .then(() => {
+                console.log("Corrected text copied to clipboard!");
+              })
+              .catch(err => {
+                console.error("Failed to copy text: ", err);
+              });
+          }
+          overlay.remove();
         } else {
           console.error("Error received:", response.error);
           overlay.remove();
