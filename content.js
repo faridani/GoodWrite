@@ -49,7 +49,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       console.log(`Request processing worked!`);
 
       chrome.runtime.sendMessage({ action: "callOllama", text: textToCorrect }, (response) => {
-        console.log("we are inside callOlamma");
+        console.log("we are inside callOllama");
         console.log(`Response: ${JSON.stringify(response, null, 2)}`);
         if (response && response.correctedText) {
           if (activeEl) {

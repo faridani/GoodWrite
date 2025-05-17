@@ -7,7 +7,7 @@ def test_ollama():
     # Test data
     payload = {
         "model": "llama2",
-        "prompt": "correct this for grammar and typos, maintain the same tone in the resulting text:this is a test sentense with some typos and grammer mistakes",
+        "prompt": "correct this for grammar and typos, maintain the same tone in the resulting text:this is a test sentence with some typos and grammar mistakes",
         "stream": False
     }
     
